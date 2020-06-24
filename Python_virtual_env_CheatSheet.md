@@ -1,0 +1,7 @@
+pipenv
+
+venv
+
+pew
+
+virtualenv
