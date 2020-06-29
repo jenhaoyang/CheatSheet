@@ -11,7 +11,7 @@
     gif_bytes_io.write(raw_bmp)
     image = Image.open(gif_bytes_io)
     image.show()
-```
+
 
 ## OpenCV和PIL互轉
 OpenCV转换成PIL.Image格式：
