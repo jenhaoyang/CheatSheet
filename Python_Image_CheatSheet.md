@@ -1,5 +1,6 @@
 ## 圖片載入np
 ```python
+import PIL.Image
 def load_image_file(file, mode='RGB'):
     """
     Loads an image file (.jpg, .png, etc) into a numpy array
