@@ -1,4 +1,5 @@
 ## 圖片載入np
+```python
 def load_image_file(file, mode='RGB'):
     """
     Loads an image file (.jpg, .png, etc) into a numpy array
@@ -10,6 +11,7 @@ def load_image_file(file, mode='RGB'):
     if mode:
         im = im.convert(mode)
     return np.array(im)
+```
 
 ## 從http message body 取得的八位元(hex)影像資料轉換成圖片
 #### 使用Pillow 和 BytesIO
