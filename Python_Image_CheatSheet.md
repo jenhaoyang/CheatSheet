@@ -1,5 +1,18 @@
+## 圖片載入np
+def load_image_file(file, mode='RGB'):
+    """
+    Loads an image file (.jpg, .png, etc) into a numpy array
+    :param file: image file name or file object to load
+    :param mode: format to convert the image to. Only 'RGB' (8-bit RGB, 3 channels) and 'L' (black and white) are supported.
+    :return: image contents as numpy array
+    """
+    im = PIL.Image.open(file)
+    if mode:
+        im = im.convert(mode)
+    return np.array(im)
+
 ## 從http message body 取得的八位元(hex)影像資料轉換成圖片
-## 使用Pillow 和 BytesIO
+#### 使用Pillow 和 BytesIO
 ```python
     from PIL import Image
     from io import BytesIO
