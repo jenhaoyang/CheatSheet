@@ -29,3 +29,46 @@ faces_field = {}
 faces_field['counts'] = fields.Integer
 faces_field['face'] = fields.List(fields.Nested(face_field))
 ```
+
+# namespace
+```python
+from flask import Flask
+from flask_restplus import Api, Resource, fields, Model
+from werkzeug.contrib.profiler import ProfilerMiddleware
+
+app = Flask(__name__)
+
+api = Api(version='1.0', title='Test')
+
+ns = api.namespace('test')
+
+test_element = api.model('Element', {
+    'a': fields.Integer(),
+    'b': fields.String(),
+})
+
+test_list = api.model('TestList', {
+    'data': fields.List(fields.Nested(test_element))
+})
+
+
+@ns.route('/')
+class TestCollection(Resource):
+    @api.marshal_list_with(test_list)
+    def get(self):
+        return {
+            'data': [
+                {'a': x, 'b': x}
+                for x in range(0, 1000)
+            ]
+        }
+
+
+if __name__ == '__main__':
+    app.config['PROFILE'] = True
+    app.wsgi_app = ProfilerMiddleware(app.wsgi_app, restrictions=(10, ))
+
+    api.init_app(app)
+    api.add_namespace(ns)
+    app.run(host='0.0.0.0', debug=True)
+```
