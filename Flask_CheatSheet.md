@@ -75,4 +75,5 @@ if __name__ == '__main__':
 
 # 打包成exe
 https://elc.github.io/posts/executable-flask-pyinstaller/
+
 https://github.com/jenhaoyang/flask-pyinstaller
