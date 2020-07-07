@@ -72,3 +72,7 @@ if __name__ == '__main__':
     api.add_namespace(ns)
     app.run(host='0.0.0.0', debug=True)
 ```
+
+# 打包成exe
+https://elc.github.io/posts/executable-flask-pyinstaller/
+https://github.com/jenhaoyang/flask-pyinstaller
