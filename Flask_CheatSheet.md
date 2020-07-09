@@ -77,3 +77,6 @@ if __name__ == '__main__':
 https://elc.github.io/posts/executable-flask-pyinstaller/
 
 https://github.com/jenhaoyang/flask-pyinstaller
+
+pyinstaller --onefile --add-data "templates;templates" --add-data "core/mtcnn_tool/model;core/mtcnn_tool/model" app.py
+
