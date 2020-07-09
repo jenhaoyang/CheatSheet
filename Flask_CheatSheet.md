@@ -78,5 +78,5 @@ https://elc.github.io/posts/executable-flask-pyinstaller/
 
 https://github.com/jenhaoyang/flask-pyinstaller
 
-pyinstaller --onefile --add-data "templates;templates" --add-data "core/mtcnn_tool/model;core/mtcnn_tool/model" app.py
-
+pyinstaller --onefile --add-data "templates;templates" --add-data "static;static" --add-data "core/mtcnn_tool/model;core/mtcnn_tool/model" app.py
+pyinstaller --onedir --add-data "templates;templates" --add-data "static;static" --add-data "core/mtcnn_tool/model;core/mtcnn_tool/model" app.py
