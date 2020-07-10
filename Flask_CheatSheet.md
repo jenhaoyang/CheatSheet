@@ -81,7 +81,8 @@ https://github.com/jenhaoyang/flask-pyinstaller
 * pyinstaller --onefile --add-data "templates;templates" --add-data "static;static" --add-data "core/mtcnn_tool/model;core/mtcnn_tool/model" app.py
 * pyinstaller --onedir --add-data "templates;templates" --add-data "static;static" --add-data "core/mtcnn_tool/model;core/mtcnn_tool/model" app.py
 
-#自動打開瀏覽器
+# 自動打開瀏覽器
+```python
 from flask import Flask
 from threading import Thread
 import socket
@@ -115,3 +116,4 @@ th = OpenBrowser()
 th.start()
 
 app.run()
+```
