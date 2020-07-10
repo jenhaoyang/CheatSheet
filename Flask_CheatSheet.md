@@ -78,5 +78,40 @@ https://elc.github.io/posts/executable-flask-pyinstaller/
 
 https://github.com/jenhaoyang/flask-pyinstaller
 
-pyinstaller --onefile --add-data "templates;templates" --add-data "static;static" --add-data "core/mtcnn_tool/model;core/mtcnn_tool/model" app.py
-pyinstaller --onedir --add-data "templates;templates" --add-data "static;static" --add-data "core/mtcnn_tool/model;core/mtcnn_tool/model" app.py
+* pyinstaller --onefile --add-data "templates;templates" --add-data "static;static" --add-data "core/mtcnn_tool/model;core/mtcnn_tool/model" app.py
+* pyinstaller --onedir --add-data "templates;templates" --add-data "static;static" --add-data "core/mtcnn_tool/model;core/mtcnn_tool/model" app.py
+
+#自動打開瀏覽器
+from flask import Flask
+from threading import Thread
+import socket
+import time
+import webbrowser
+
+
+app = Flask(__name__)
+
+class OpenBrowser(Thread):
+
+    def __init__(self):
+        super(OpenBrowser, self).__init__()
+
+    def notResponding(self):
+        sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+        return sock.connect_ex(('127.0.0.1', 5000))
+
+    def run(self):
+        while self.notResponding():
+            print('Did not respond')
+        print('Responded')
+        webbrowser.open_new('http://127.0.0.1:5000/') 
+
+@app.route('/')
+def index():
+    return 'Hello World'
+
+th = OpenBrowser()
+
+th.start()
+
+app.run()
