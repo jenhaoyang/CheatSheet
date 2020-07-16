@@ -62,3 +62,14 @@ cv2.waitKey()
 ————————————————
 版权声明：本文为CSDN博主「_yuki_」的原创文章，遵循CC 4.0 BY-SA版权协议，转载请附上原文出处链接及本声明。
 原文链接：https://blog.csdn.net/qq_19707521/java/article/details/78367617
+
+
+# resize
+```python
+#column = w    row = height
+(row,column,channel)=cv2_img.shape
+resize_ratio=413/column
+resize_column = int(column*resize_ratio)
+resize_row = int(resize_column*(row/column))
+cv2_img = cv2.resize(cv2_img,(resize_column, resize_row),interpolation = cv2.INTER_AREA)
+```
