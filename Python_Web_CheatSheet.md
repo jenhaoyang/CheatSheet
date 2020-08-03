@@ -29,3 +29,15 @@ r = requests.post('http://httpbin.org/post', data=m,
 ```python
 m.to_string()  # Always returns unicode
 ```
+### post 圖片並接收
+```python
+    def post(self,args):
+        import io
+        from PIL import Image
+        source_file = args.pop('source_file')
+        image = source_file.read()
+        image = Image.open(io.BytesIO(image))
+        image.save('test.jpg')
+        print(source_file.read())
+        return "OK"
+```
